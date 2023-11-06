@@ -1,46 +1,27 @@
 <template>
-<p>Todo id: {{ todoId }}</p>
-<button @click="todoId++">Vrat nove todo</button>
-<p v-if="!todoData">Loading...</p>
-<pre v-else>{{ todoData }}</pre>
+    <h1>Toto je hlavny ROOT komponent</h1><br><br>
+<ChildComponent :sprava="greeting" />
+<ChildComponent @response="(msg) => childMsg = msg" />
+    <p>{{ childMsg }}</p>
+<SlotComponent>Message: {{ msg }}</SlotComponent>
 </template>
 
 <script>
-
+import ChildComponent from "@/components/ChildComponent.vue";
+import SlotComponent from "@/components/SlotComponent.vue";
 export default {
     data() {
         return {
-            todoId: 1,
-            todoData: null
+            greeting: 'Ahoj rodiccccccccccccccccc',
+            childMsg: 'No child msg yet',
+            msg: 'from parent'
         }
     },
-    methods: {
-        async fetchData() {
-            this.todoData = null
-            //AJAX - Asynchronous Javascript and XML
-            //AJAJ - Asynchronous Javascript and JSON
-            const res = await fetch(`https://jsonplaceholder.typicode.com/todos/${this.todoId}`)
-            this.todoData = await res.json()
-        }
-    },
-    mounted() {
-        this.fetchData()
-    },
-    watch: {
-        todoId() {
-            this.fetchData()
-        }
-    }
+    components: {ChildComponent, SlotComponent}
 }
 </script>
 
 
 <style scoped>
-.title {
-    color: red;
-}
 
-.done {
-    text-decoration: line-through;
-}
 </style>
