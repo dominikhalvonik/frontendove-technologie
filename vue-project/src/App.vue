@@ -7,7 +7,9 @@
 
             <nav>
                 <router-link to="/">Home</router-link>
-                <router-link to="/about">About</router-link>
+                <router-link to="/about/fdsafdsafds">About</router-link>
+                <router-link to="/about/test/moja-message">About 2</router-link>
+                <router-link :to="{name: 'test', params: {message: 'fdsafds', msg:'llllll'}}">About 3</router-link>
             </nav>
         </div>
     </header>
