@@ -5,15 +5,32 @@
             You’ve successfully created a project with
             <a href="https://vitejs.dev/" target="_blank" rel="noopener">Vite</a> +
             <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue 3</a>. What's next?
-        </h3>
+        </h3><br>
+        <p>Počet kliknutí: {{ count }}</p>
     </div>
 </template>
 
 <script lang="ts">
+
+import {useCounterOptionsStore} from "@/stores/counter-options";
 export default {
+    data() {
+        const counterStore = useCounterOptionsStore();
+
+        return {
+            // Vráti priamo reaktívnu referenciu na počet
+            counterStore,
+        };
+    },
     props: {
         msg: String
-    }
+    },
+    computed: {
+        // Vypočítaná vlastnosť pre získanie aktuálneho počtu
+        count() {
+            return this.counterStore.count;
+        },
+    },
 }
 </script>
 

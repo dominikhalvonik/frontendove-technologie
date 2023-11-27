@@ -9,7 +9,7 @@
                 <router-link to="/">Home</router-link>
                 <router-link to="/about/fsdafdsafdsfdadsad">About</router-link>
                 <router-link to="/about/about/tvoja-sprava">About 2</router-link>
-                <router-link :to="{name: 'test', params: {msg: 'Tessssst'}}">About 3</router-link>
+                <router-link :to="{name: 'test', params: {text: 'fsdafdsafds',msg: 'Tessssst'}}">About 3</router-link>
             </nav>
         </div>
     </header>
